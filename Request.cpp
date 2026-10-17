@@ -12,7 +12,7 @@ Request::Request(){
 	description=" ";
 }
 
-Request::Request(string RID,string PID,string type,string time,string st,string ds,int pr,string nm){
+Request::Request(string RID,string PID,string nm,string type,string time,string st,int pr,string ds){
 	
 	requestID=RID;
 	patientName=nm;
