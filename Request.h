@@ -1,5 +1,6 @@
 #ifndef REQUEST_H
 #define REQUEST_H
+#include <string>
 # include <iostream>
 using namespace std;
 
@@ -17,7 +18,6 @@ class Request{
 	public:
 		
 		Request();
-		~Request();
 		Request(string RID,string PID,string type,string time,string st,string ds,int pr,string);
 		void setName(string);
 		void setRequestID(string);
@@ -26,14 +26,17 @@ class Request{
 		void setStatus(string);
 		void setDescription(string);
 		void setPriority(int);
-		string getName();
-		string getPatientID();
-		string getReqauestID();
+		string getName() const;
+		string getPatientID() const;
+		string getRequestID() const;
 		string getType();
 		string getTime();
 		string getStatus();
-		int getPriority();
+		int getPriority() const;
 		string getDescription();
-		void setStatus();
-		void displayRequest();
+		void displayRequest() const;
 };
+
+#endif
+
+
