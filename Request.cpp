@@ -17,18 +17,14 @@ Request::Request(string RID,string PID,string type,string time,string st,string 
 	requestID=RID;
 	patientName=nm;
 	patientID=PID;
-	type=type;
+	this->type=type;
 	status=st;
-	time=time;
+	this->time=time;
 	Priority=pr;
 	description=ds;
 }
 
-Request::~Request(){
-	cout<<"Request is being destroyed";
-}
-
-string Request::getReqauestID(){
+string Request::getRequestID() const{
 	return requestID;
 }
 
@@ -36,7 +32,7 @@ string Request::getStatus(){
 	return status;
 }
 
-string Request::getPatientID(){
+string Request::getPatientID() const{
 	return patientID;
 }
 
@@ -44,7 +40,7 @@ string Request::getTime(){
 	return time;
 }
 
-int Request::getPriority(){
+int Request::getPriority() const{
 	return Priority;
 }
 
@@ -70,18 +66,22 @@ void Request::setDescription(string ds){
 	description=ds;
 }
 void Request::setPriority(int ps){
-	Priority=ps;
+	
+	if (ps>=1 && ps<=4){
+		this->Priority=ps;
+	}
+	
 }
 
 void Request::setName(string nm){
 	patientName=nm;
 }
 
-string Request::getName(){
+string Request::getName() const{
 	return patientName;
 }
 
-void Request::displayRequest() {
+void Request::displayRequest() const{
     cout << "\n----- Request Information -----" << endl;
     cout << "Request ID: " << requestID << endl;
     cout << "Patient ID: " << patientID << endl;
@@ -93,16 +93,3 @@ void Request::displayRequest() {
     cout << "Description: " << description << endl;
     cout << "-------------------------------" << endl;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
