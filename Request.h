@@ -18,7 +18,7 @@ class Request{
 	public:
 		
 		Request();
-		Request(string RID,string PID,string type,string time,string st,string ds,int pr,string);
+		Request(string RID,string PID,string nm,string type,string time,string st,int pr,string ds);
 		void setName(string);
 		void setRequestID(string);
 		void setPatientID(string);
@@ -38,5 +38,4 @@ class Request{
 };
 
 #endif
-
 
