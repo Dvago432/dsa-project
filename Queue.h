@@ -1,30 +1,16 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include "LinkedList.h"
 #include "Request.h"
 
 class Queue {
-	
+
     private:
-    	
-        struct Node {
-    	
-            Request data;
-            Node* next;
-
-            Node(const Request& request){
-            	
-                data=request;
-				next=nullptr;
-            }
-        };
-
-        Node* front;
-        Node* rear;
-        int count;
+        LinkedList<Request> requests;
 
     public:
-    	
+
         // Constructor and destructor
         Queue();
         ~Queue();
