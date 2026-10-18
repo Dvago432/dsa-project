@@ -3,7 +3,7 @@
 
 using namespace std;
 
-/*int main() {
+int main() {
     int choice;
 
     do {
@@ -83,4 +83,4 @@ using namespace std;
     } while (choice != 0);
 
     return 0;
-}*/
+}
