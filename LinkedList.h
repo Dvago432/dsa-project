@@ -37,17 +37,14 @@ class LinkedList{
 		bool deleteEnd();
 		bool deleteAt(int pos); //pos from 0 to size-1
 
-<<<<<<< HEAD
 		T* getAt(int pos); //NULL if pos is invalid
 		const T* getAt(int pos) const;
 		Node<T>* getHead();
 		const Node<T>* getHead() const;
 		Node<T>* getTail();
 		const Node<T>* getTail() const;
-=======
 		T* getAt(int pos) const ; //NULL if pos is invalid
 		Node<T>* getHead();
->>>>>>> 96310d6 (Updated linkedList header file)
 		int getSize() const;
 		bool isEmpty() const;
 		void clear();
@@ -184,7 +181,7 @@ bool LinkedList<T>::deleteAt(int pos){
 }
 
 template <class T>
-T* LinkedList<T>::getAt(int pos) const{
+const T* LinkedList<T>::getAt(int pos) const{
 	if(pos < 0 || pos >= size){
 		return nullptr;
 	}
@@ -213,7 +210,6 @@ Node<T>* LinkedList<T>::getHead(){
 }
 
 template <class T>
-<<<<<<< HEAD
 const Node<T>* LinkedList<T>::getHead() const{
 	return head;
 }
@@ -229,8 +225,6 @@ const Node<T>* LinkedList<T>::getTail() const{
 }
 
 template <class T>
-=======
->>>>>>> 96310d6 (Updated linkedList header file)
 int LinkedList<T>::getSize() const{
 	return size;
 }
