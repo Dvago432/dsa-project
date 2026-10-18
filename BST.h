@@ -5,13 +5,6 @@
 //Use patient id to search, insert and delete patients by id
 //use custom node
 
-struct BST_Node {
-
-    Patient patient;
-    BST_Node* left;
-    BST_Node* right;
-};
-
 class BST {
 
     private:
