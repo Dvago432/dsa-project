@@ -1,59 +1,97 @@
 #include "BST.h"
 #include <iostream>
 using namespace std;
-
-BST::BST() {
-
-    root->left = nullptr;
-    root->right = nullptr;
-    root = nullptr;
-    count = 0;
-}
-
 //come back to destructor
-void BST::insertPatient(Patient patient_) {
 
-    if (root == nullptr) {
+void BST::insert(BST_Node* current, const Patient& patient) {
 
-        root->patient = patient_;
+    if (current == nullptr) {
+
+        current = new BST_Node;
+        current->patient = patient;
         return;
     }
 
-    if (patient_.getPatientID() < root->patient.getPatientID()) {
+    if (patient.getPatientID() < current->patient.getPatientID()) {
 
-        root = root->left;
-        insertPatient(patient_);
+        insert(current->left, patient);
     }
+    if (patient.getPatientID() > current->patient.getPatientID()) {
 
-    if (patient_.getPatientID() > root->patient.getPatientID()) {
-
-        root = root->right;
-        insertPatient(patient_);
+        insert(current->right, patient);
     }
 }
+void BST::preorder(const BST_Node* current) const {
 
-bool BST::searchForPatient(int target_id) {
+    if (current == nullptr) return;
+    
+    cout << current->patient.getName();
+    cout << ": ";
+    cout << current->patient.getAge();
+    cout << ": ";
+    cout << current->patient.getCondition();
+    cout << ": ";
+    cout << current->patient.getAssignedWard();
+    cout << ": ";
+    cout << current->patient.getPriority();
+    cout << ": ";
+    cout << current->patient.getStatus();
+    preorder(current->left);
+    preorder(current->right);
+}
 
-    if (target_id == root->patient.getPatientID()) {
+void BST::levelOrder(const BST_Node* current) const {
+
+    if (current == nullptr) return;
+    
+}
+
+void BST::inorder(const BST_Node* current) const {
+
+    if (current == nullptr) return;
+    inorder(current->left);
+    cout << current->patient.getName();
+    cout << ": ";
+    cout << current->patient.getAge();
+    cout << ": ";
+    cout << current->patient.getCondition();
+    cout << ": ";
+    cout << current->patient.getAssignedWard();
+    cout << ": ";
+    cout << current->patient.getPriority();
+    cout << ": ";
+    cout << current->patient.getStatus();
+    inorder(current->right);
+}
+
+bool BST::search(BST_Node* current, int target) {
+
+    if (current == nullptr) return false;
+    if (target < current->patient.getPatientID()) {
+
+        return search(current->left, target);
+    }
+
+    if (target > current->patient.getPatientID()) {
+
+        return search(current->right, target);
+    }
+
+    if (target == current->patient.getPatientID()) {
 
         return true;
     }
 
-    if (target_id < root->patient.getPatientID()) {
-
-        root = root->left;
-        count++;
-        return searchForPatient(target_id);
-    }
-
-    if (target_id > root->patient.getPatientID()) {
-
-        root = root->right;
-        count++;
-        return searchForPatient(target_id);
-    }
-
     return false;
+}
+void BST::insertPatient(Patient patient_) {
+
+    insert(root, patient_);
+}
+
+bool BST::searchForPatient(int target_id) {
+
+    return search(root, target_id);
 }
 
 void BST::deletePatient(int target_id) {
@@ -75,17 +113,5 @@ void BST::deletePatient(int target_id) {
 
 void BST::inorder_traverse() {
 
-    BST_Node* current = root;
-
-    current = current->left;
-    inorder_traverse();
-
-    cout << current->patient.getName();
-    cout << ": ";
-    cout << current->patient.getAge();
-    cout << ": ";
-    cout << current->patient.getCondition();
-    cout << ": ";
-    cout << current->patient.getAssignedWard();
-
+    inorder(root);
 }
