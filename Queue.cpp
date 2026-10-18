@@ -5,45 +5,20 @@ using namespace std;
 
 // Constructor
 Queue::Queue() {
-    front = nullptr;
-    rear = nullptr;
-    count = 0;
 }
 
 // Destructor
 Queue::~Queue() {
-    Node* current = front;
-
-    while (current != nullptr) {
-        Node* temp = current;
-        current = current->next;
-        delete temp;
-    }
-
-    front = nullptr;
-    rear = nullptr;
-    count = 0;
 }
 
 // Check if queue is empty
 bool Queue::isEmpty() const {
-    return front == nullptr;
+    return requests.isEmpty();
 }
 
 // Add a request to the rear
 void Queue::enqueue(const Request& request) {
-    Node* newNode = new Node(request);
-
-    if (isEmpty()) {
-        front = newNode;
-        rear = newNode;
-    } else {
-        rear->next = newNode;
-        rear = newNode;
-    }
-
-    count++;
-
+    requests.insertEnd(request);
     cout << "Request added successfully." << endl;
 }
 
@@ -54,20 +29,16 @@ bool Queue::dequeue(Request& removedRequest) {
         return false;
     }
 
-    Node* temp = front;
-
-    removedRequest = temp->data;
-    front = front->next;
-
-    if (front == nullptr) {
-        rear = nullptr;
+    Request* frontRequest = requests.getAt(0);
+    if (frontRequest == nullptr) {
+        cout << "The queue is empty." << endl;
+        return false;
     }
 
-    delete temp;
-    count--;
+    removedRequest = *frontRequest;
+    requests.deleteFront();
 
     cout << "Request processed successfully." << endl;
-
     return true;
 }
 
@@ -78,17 +49,17 @@ void Queue::display() const {
         return;
     }
 
-    Node* current = front;
-
     cout << "\n--- Admission Request Queue ---\n";
 
-    while (current != nullptr) {
-        current->data.displayRequest();
-        current = current->next;
+    for (int i = 0; i < requests.getSize(); i++) {
+        Request* request = requests.getAt(i);
+        if (request != nullptr) {
+            request->displayRequest();
+        }
     }
 }
 
 // Return number of requests
 int Queue::size() const {
-    return count;
+    return requests.getSize();
 }
