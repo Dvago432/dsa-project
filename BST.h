@@ -16,7 +16,7 @@ class BST {
     private:
 
         BST_Node* root;
-        void insert(BST_Node*, const Patient&);
+        void insert(BST_Node*&, const Patient&);
         void inorder(const BST_Node*) const;
         bool search(BST_Node*, int);
         void preorder(const BST_Node*) const;
