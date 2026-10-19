@@ -98,4 +98,4 @@ void mergeSort(Patient arr[], int left, int right, int criteria){
 		mergeSort(arr, mid + 1, right, criteria);
 		mergeParts(arr, left, mid, right, criteria);
 	}
-}
+}
