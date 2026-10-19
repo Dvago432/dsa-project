@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "LinkedList.h"
-#include "Request.h"
 
 template <typename T>
 class Queue {
