@@ -50,4 +50,4 @@ void Equipment::display() const{
 	cout << "ID: " << equipmentID << " | " << equipmentName << " | " << equipmentType
 	     << " | Location: " << equipmentLocation << " | " << equipmentStatus
 	     << " | Last serviced: " << lastServiced << endl;
-}
+}
