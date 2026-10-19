@@ -46,4 +46,4 @@ void Ward::display() const{
 	cout << "ID: " << wardID << " | " << wardName << " | " << type
 	     << " | Occupancy: " << currentOccupancy << "/" << capacity
 	     << " | " << status << endl;
-}
+}
