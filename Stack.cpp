@@ -118,4 +118,4 @@ void Stack::display() const {
 // Return the number of actions
 int Stack::size() const {
     return count;
-}
+}
