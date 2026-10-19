@@ -1,14 +1,17 @@
 #include "BST.h"
 #include <iostream>
+#include <queue>
 using namespace std;
 //come back to destructor
 
-void BST::insert(BST_Node* current, const Patient& patient) {
+void BST::insert(BST_Node*& current, const Patient& patient) {
 
     if (current == nullptr) {
 
         current = new BST_Node;
         current->patient = patient;
+        current->left = nullptr;
+        current->right = nullptr;
         return;
     }
 
@@ -43,7 +46,19 @@ void BST::preorder(const BST_Node* current) const {
 void BST::levelOrder(const BST_Node* current) const {
 
     if (current == nullptr) return;
-    
+
+    queue<const BST_Node*> q;
+    q.push(current);
+
+    while (!q.empty()) {
+
+        const BST_Node* node = q.front();
+        q.pop();
+        cout << node->patient.getName() << ": " << node->patient.getPatientID() << endl;
+
+        if (node->left != nullptr) q.push(node->left);
+        if (node->right != nullptr) q.push(node->right);
+    }
 }
 
 void BST::inorder(const BST_Node* current) const {
@@ -111,7 +126,33 @@ void BST::deletePatient(int target_id) {
 }
 //might need fixing; changing the root is inefficient
 
+BST::~BST() {
+
+    queue<BST_Node*> q;
+    if (root != nullptr) q.push(root);
+
+    while (!q.empty()) {
+
+        BST_Node* node = q.front();
+        q.pop();
+
+        if (node->left  != nullptr) q.push(node->left);
+        if (node->right != nullptr) q.push(node->right);
+        delete node;
+    }
+}
+
 void BST::inorder_traverse() {
 
     inorder(root);
+}
+
+void BST::preorder_traverse() {
+
+    preorder(root);
+}
+
+void BST::levelOrder_traverse() {
+
+    levelOrder(root);
 }
