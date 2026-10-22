@@ -4,6 +4,8 @@
 #include <iostream>
 #include "LinkedList.h"
 
+using namespace std;
+
 template <typename T>
 class Queue {
 
@@ -61,6 +63,7 @@ bool Queue<T>::dequeue(T& removedItem) {
     cout << "Request processed successfully." << endl;
     return true;
 }
+
 template <typename T>
 void Queue<T>::display() const {
     if (isEmpty()) {
@@ -71,7 +74,7 @@ void Queue<T>::display() const {
     cout << "\n--- Admission Request Queue ---\n";
 
     for (int i = 0; i < queue.getSize(); i++) {
-        T* item = queue.getAt(i);
+        const T* item = queue.getAt(i);
         if (item != nullptr) {
             item->displayRequest();
         }
@@ -82,4 +85,5 @@ template <typename T>
 int Queue<T>::size() const {
     return queue.getSize();
 }
+
 #endif

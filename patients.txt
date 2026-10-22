@@ -1,0 +1,5 @@
+220|Lerato|27|Malaria|Ward A|20|2|2026|Waiting|1
+150|Neo|60|Asthma|Ward C|1|4|2026|Admitted|4
+101|Mpho|45|Fracture|Ward B|5|1|2026|Admitted|2
+301|Sipho Dlamini|35|High fever and dehydration|Ward A|20|10|2026|Admitted|4
+156|Tiisetso|19|Malaria|a|21|5|2026|admitted|2

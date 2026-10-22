@@ -1,1 +1,2 @@
-1|Ward A|General|10|4|Open
+1|Ward A|General|15|5|Open
+2|Ward B, martenity|Intensive|15|0|open
